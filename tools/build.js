@@ -65,7 +65,7 @@ promise = promise.then(() => del(['build/*']));
 // Compile source code into a distributable format with Babel
 for (const file of files) {
   promise = promise.then(() => rollup.rollup({
-    entry: 'src/socket-io-client.js',
+    entry: 'src/message-client-socketio.js',
     external: file.format === 'umd' ? [] : Object.keys(pkg.dependencies),
     plugins: [
       ...file.format === 'umd' ? [nodeResolve({browser: true}), commonjs()] : [],
@@ -79,7 +79,7 @@ for (const file of files) {
       ...file.minify ? [uglify()] : [],
     ],
   }).then(bundle => bundle.write({
-    dest: `build/${file.output || 'main'}${file.ext}`,
+    dest: `build/${file.output || 'main'}/message-client-socketio.${file.ext}`,
     format: file.format,
     sourceMap: !file.minify,
     exports: 'named',
