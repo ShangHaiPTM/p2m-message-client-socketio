@@ -2,6 +2,7 @@
  * Created by colinhan on 20/02/2017.
  */
 const io = require('socket.io-client');
+const client = require('p2m-message-client');
 
 let _socket;
 let _options;
@@ -46,17 +47,7 @@ function channel(options) {
     });
     _socket.on('push-message', function (message) {
       console.log(`[SOCKET-IO] Got a message`);
-      fetch(`${fullPath}/delivered`, {
-        method: 'post',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({pushId: message.pushId}),
-        credentials: 'include',
-      }).then(() => {
-        console.log(`[SOCKET-IO] Set message as delivered success.`);
-      });
+      client.delivered(message.pushId);
 
       emit('message', message, self);
     });

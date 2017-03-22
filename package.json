@@ -1,4 +1,8 @@
 {
+  "_moduleName": "p2m.message.client.socketio",
+  "_entries": [
+    "message-client-socketio"
+  ],
   "name": "p2m-message-client-socketio",
   "version": "1.0.0",
   "description": "Socket-io client plugin for p2m message service.",
@@ -9,17 +13,22 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.23.0",
+    "p2m-message-client": "^1.0.1",
     "socket.io-client": "^1.7.3",
     "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
+    "babel-cli": "^6.24.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-es2015-modules-amd": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-latest": "^6.22.0",
+    "chai": "^3.5.0",
     "del": "^2.2.2",
+    "istanbul": "^0.4.5",
+    "jquery": "^3.2.1",
+    "mocha": "^3.2.0",
     "rollup": "^0.41.4",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^7.0.0",
@@ -37,6 +46,9 @@
   },
   "scripts": {
     "build": "node tools/build.js",
-    "prepublish": "node tools/build.js"
+    "prepublish": "npm build && npm test",
+    "test": "mocha test/**/*.spec.js",
+    "test:watch": "mocha --reporter min --watch test/**/*.spec.js",
+    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha test/**/*.spec.js"
   }
 }
