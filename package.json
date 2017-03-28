@@ -1,13 +1,13 @@
 {
   "_moduleName": "p2m.message.client.socketio",
   "_entries": [
-    "message-client-socketio"
+    "message-client-socket-io"
   ],
-  "name": "p2m-message-client-socketio",
-  "version": "1.0.3",
+  "name": "p2m-message-client-socket-io",
+  "version": "1.0.0",
   "description": "Socket-io client plugin for p2m message service.",
-  "main": "main/message-client-socketio.js",
-  "browser": "browser/message-client-socketio.js",
+  "main": "main/message-client-socket-io.js",
+  "browser": "browser/message-client-socket-io.js",
   "repository": "https://github.com/colin-han/p2m-message-client-socketio.git",
   "author": "Colin Han <biz@colinhan.info>",
   "license": "MIT",
