@@ -5,7 +5,7 @@
 const {assert} = require('chai');
 
 describe('load es6 module', ()=> {
-  const client = require('../build/main/message-client-socketio')();
+  const client = require('../build/main/message-client-socket-io')();
   it('should has start() method', ()=> {
     assert.typeOf(client.start, 'function');
   });
