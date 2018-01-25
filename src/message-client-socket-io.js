@@ -29,6 +29,28 @@ function channel(options) {
     }
   }
 
+  function off(event, callback) {
+    let list = events[event];
+
+    if (list == null) {
+      console.error('[SOCKET-IO] specified callback is not found in event list ' + event);
+      return;
+    }
+
+    let found = false;
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].cb === callback) {
+        list.splice(i, 1);
+        found = true;
+        i--;
+      }
+    }
+
+    if (!found) {
+      console.error('[SOCKET-IO] specified callback is not found in event list ' + event);
+    }
+  }
+
   function start(opt2) {
     let self = this;
     _options = Object.assign({}, options, opt2);
