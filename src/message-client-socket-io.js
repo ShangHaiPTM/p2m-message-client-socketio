@@ -34,7 +34,7 @@ function channel(options) {
 
     if (list == null) {
       console.error('[SOCKET-IO] specified callback is not found in event list ' + event);
-      return;
+      return this;
     }
 
     let found = false;
@@ -49,6 +49,7 @@ function channel(options) {
     if (!found) {
       console.error('[SOCKET-IO] specified callback is not found in event list ' + event);
     }
+    return this;
   }
 
   function start(opt2) {
