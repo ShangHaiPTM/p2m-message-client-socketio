@@ -80,7 +80,7 @@ function channel(options) {
     emit('disconnect', this);
   }
 
-  return {start, stop, on, channelId: 'socket-io'};
+  return {start, stop, on, off, channelId: 'socket-io'};
 }
 
 module.exports = channel;
